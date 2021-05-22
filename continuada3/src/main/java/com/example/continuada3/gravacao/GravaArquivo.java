@@ -1,4 +1,4 @@
-package com.example.continuada3.controle.gravacao;
+package com.example.continuada3.gravacao;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -25,10 +25,9 @@ public class GravaArquivo {
         }
     }
 
-
     public static void main(String[] args) {
 
-        String nomeArq = "ArquivoNotas.txt";
+        String nomeArq = "Certidoes.txt";
         String header = "";
         String corpo = "";
         String trailer = "";
@@ -63,7 +62,7 @@ public class GravaArquivo {
         corpo += String.format("%-30s", "tuco silva");  //nome
         corpo += String.format("%-15s", "Sao caetano"); //cidade
         corpo += String.format("%-30s", "nene silva"); //mae
-        corpo += String.format("%-30s", "linel silva"); //pai
+        corpo += String.format("%-30s", "linelzinho silva"); //pai
         gravaRegistro(nomeArq,corpo);
 
 

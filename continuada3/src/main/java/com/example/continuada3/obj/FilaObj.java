@@ -1,4 +1,4 @@
-package com.example.continuada3.Obj;
+package com.example.continuada3.obj;
 
 // Representa uma fila de objetos de tipo genérico
 public class FilaObj<T> {

@@ -1,7 +1,14 @@
 package com.example.continuada3.documentos;
 
-public class Certidoes {
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
+public class Certidao {
+
+    @Id
+    private String protocolo;
 
     private String cpf;
     private Integer anoDeNascimento;
@@ -10,10 +17,15 @@ public class Certidoes {
     private String  nomeDaMae;
     private String  nomeDoPai;
 
+    public String getProtocolo() {
+        return protocolo;
+    }
 
+    public void setProtocolo(String protocolo) {
+        this.protocolo = protocolo;
+    }
 
-    //getters e setters
-
+//getters e setters
 
     public String getCpf() {
         return cpf;

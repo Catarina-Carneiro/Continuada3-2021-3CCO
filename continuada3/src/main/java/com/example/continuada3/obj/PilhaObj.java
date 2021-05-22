@@ -1,4 +1,4 @@
-package com.example.continuada3.Obj;
+package com.example.continuada3.obj;
 
 public class PilhaObj<T> {
 
