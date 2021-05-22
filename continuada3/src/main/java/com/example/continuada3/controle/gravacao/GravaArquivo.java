@@ -1,3 +1,5 @@
+package com.example.continuada3.controle.gravacao;
+
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -24,7 +26,6 @@ public class GravaArquivo {
     }
 
 
-
     public static void main(String[] args) {
 
         String nomeArq = "ArquivoNotas.txt";
@@ -37,48 +38,33 @@ public class GravaArquivo {
         Date dataDeHoje = new Date();
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
 
-        header += "00NOTA20202";
+        header += "novos";
         header += formatter.format(dataDeHoje);
         header += "01";
 
         // Grava o registro header
         gravaRegistro(nomeArq, header);
 
-        // Monta o corpo
-
-        // 1o registro de dados
         corpo += "02";
-        // %-5s : para strings, usamos s
-        //        - alinha para a esquerda, campo de 5 caracteres, completa
-        //        espaços com brancos à direita
-        corpo += String.format("%-5s", "ADS");     // aluno.getCurso()
-        corpo += "01181070";
-        corpo += String.format("%-50s", "MJONATHAN SEBIOS");  // aluno.getNome()
-        corpo += String.format("%-40s", "Banco de Dados");
-        // %05.2f : para número com casas decimais, usamos f
-        //          alinha para a direita, porque não tem o -
-        //          completa com zeros à esquerda
-        //          formata com 2 casas decimais, separado por vírgula
-        corpo += String.format("%05.2f", 7.5);
-        // %03d : para número inteiro, usamos d
-        //        alinha para a direita e completa com zeros à esquerda
-        corpo += String.format("%03d", 10);
-        // incrementa o contador de registros de dados
+
+        corpo += String.format("%11s", "728.364.189-22");// cpf
+        corpo += String.format("%04d", 1999);// ano de nascimento
+        corpo += String.format("%-30s", "Axl Rose");  //nome
+        corpo += String.format("%-15s", "Sao caetano"); //cidade
+        corpo += String.format("%-30s", "Laddy gaga"); //mae
+        corpo += String.format("%-30s", "thomas shelby"); //pai
         contRegDados++;
-        // chama o método para gravar um registro
         gravaRegistro(nomeArq,corpo);
 
-        // 2o registro de dados - OBS.: Não usar += no primeiro campo do corpo agora!
+
         corpo = "02";
-        corpo += String.format("%-5s", "BD");  // aluno.getCurso()
-        corpo += "01181080";
-        corpo += String.format("%-50s", "José Oliveira");
-        corpo += String.format("%-40s", "Algoritmos");
-        corpo += String.format("%05.2f", 5.75);
-        corpo += String.format("%03d", 7);
-        contRegDados++;
+        corpo += String.format("%11s", "924.435.392-10");// cpf
+        corpo += String.format("%04d", 2001);// ano de nascimento
+        corpo += String.format("%-30s", "tuco silva");  //nome
+        corpo += String.format("%-15s", "Sao caetano"); //cidade
+        corpo += String.format("%-30s", "nene silva"); //mae
+        corpo += String.format("%-30s", "linel silva"); //pai
         gravaRegistro(nomeArq,corpo);
-
 
 
         // monta o trailer

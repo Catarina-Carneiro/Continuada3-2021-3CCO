@@ -1,39 +1,65 @@
 package com.example.continuada3.documentos;
 
-import com.example.Continuada1.repository.Documentavel;
+public class Certidoes {
 
-public class Certidoes implements Documentavel {
 
+    private String cpf;
+    private Integer anoDeNascimento;
     private String nome;
-    private Integer cpf;
-    private Integer qntdCertidoes;
+    private String cidadeDeNascimento;
+    private String  nomeDaMae;
+    private String  nomeDoPai;
 
-    //construtor
 
-    public Certidoes(String nome, Integer cpf, Integer qntdCertidoes) {
-        this.nome = nome;
-        this.cpf = cpf;
-        this.qntdCertidoes = qntdCertidoes;
+
+    //getters e setters
+
+
+    public String getCpf() {
+        return cpf;
     }
 
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
 
-    //get
+    public Integer getAnoDeNascimento() {
+        return anoDeNascimento;
+    }
+
+    public void setAnoDeNascimento(Integer anoDeNascimento) {
+        this.anoDeNascimento = anoDeNascimento;
+    }
 
     public String getNome() {
         return nome;
     }
 
-    public Integer getCpf() {
-        return cpf;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public Integer getQntdCertidoes() {
-        return qntdCertidoes;
+    public String getCidadeDeNascimento() {
+        return cidadeDeNascimento;
     }
-    //IMPLEMENTAÇÃO DO METODO
 
-    @Override
-    public Double getValorDoc() {
-        return 80.00 * qntdCertidoes;
+    public void setCidadeDeNascimento(String cidadeDeNascimento) {
+        this.cidadeDeNascimento = cidadeDeNascimento;
+    }
+
+    public String getNomeDaMae() {
+        return nomeDaMae;
+    }
+
+    public void setNomeDaMae(String nomeDaMae) {
+        this.nomeDaMae = nomeDaMae;
+    }
+
+    public String getNomeDoPai() {
+        return nomeDoPai;
+    }
+
+    public void setNomeDoPai(String nomeDoPai) {
+        this.nomeDoPai = nomeDoPai;
     }
 }
