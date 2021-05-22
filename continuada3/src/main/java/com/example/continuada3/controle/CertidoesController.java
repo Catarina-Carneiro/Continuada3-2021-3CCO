@@ -16,7 +16,6 @@ import java.util.concurrent.ThreadLocalRandom;
 @RequestMapping("/certidoes")
 public class CertidoesController {
 
-
     @Autowired
     private CertidoesRepository repository;
 

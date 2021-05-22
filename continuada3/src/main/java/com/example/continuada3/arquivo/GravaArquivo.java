@@ -1,4 +1,4 @@
-package com.example.continuada3.gravacao;
+package com.example.continuada3.arquivo;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;

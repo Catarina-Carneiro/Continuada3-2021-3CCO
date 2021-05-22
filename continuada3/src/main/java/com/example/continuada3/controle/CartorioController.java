@@ -61,4 +61,8 @@ public class CartorioController {
             return ResponseEntity.status(404).header("previsao", previsao.toString()).build();
         }
     }
+
+
+
+
 }
