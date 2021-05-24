@@ -1,18 +1,47 @@
-package com.example.continuada3.documentos;
+package com.example.continuada3.dominio;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
+import javax.validation.constraints.Size;
+import java.util.List;
 
 @Entity
 public class Cartorio {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
     private String protocolo;
+
+    @Positive
+    @NotNull
     private Integer cartorioDeBusca;
+
+    @NotNull
     private String nome;
+
+    @NotNull
     private String rua;
+
+    @NotNull
     private String bairro;
+
+    @Positive
+    @NotNull
     private Integer numero;
+
+    @OneToMany
+    private List<Certidao> certidoes;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getProtocolo() {
         return protocolo;

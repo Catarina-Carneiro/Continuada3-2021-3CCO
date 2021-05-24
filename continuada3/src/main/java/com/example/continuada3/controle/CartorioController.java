@@ -1,25 +1,26 @@
 package com.example.continuada3.controle;
 
-import com.example.continuada3.documentos.Cartorio;
+import com.example.continuada3.dominio.Cartorio;
 import com.example.continuada3.repository.CartorioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.time.LocalDateTime;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
 
 @RestController
-@RequestMapping("/certidoes2")
+@RequestMapping("/cartorio")
 public class CartorioController {
 
     @Autowired
     private CartorioRepository repository;
 
     @PostMapping
-    public ResponseEntity novoSorteio() {
+    public ResponseEntity novaBusca() {
 
         String protocolo = UUID.randomUUID().toString();
         LocalDateTime previsao = LocalDateTime.now().plusSeconds(16);
@@ -61,8 +62,11 @@ public class CartorioController {
             return ResponseEntity.status(404).header("previsao", previsao.toString()).build();
         }
     }
+    
 
-
-
+    @GetMapping
+    public ResponseEntity getCartorios(){
+        return ResponseEntity.status(200).body(repository.findAll());
+    }
 
 }
