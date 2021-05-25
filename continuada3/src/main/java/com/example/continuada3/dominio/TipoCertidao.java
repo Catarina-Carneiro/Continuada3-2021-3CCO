@@ -3,6 +3,9 @@ package com.example.continuada3.dominio;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
@@ -12,6 +15,8 @@ public class TipoCertidao {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @NotBlank
+    @NotNull
     private String nome;
 
     @OneToMany(mappedBy = "tipo")

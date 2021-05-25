@@ -21,8 +21,12 @@ public class TipoCertidaoController {
     }
 
     @GetMapping
-    public ResponseEntity getTipos(){
+    public ResponseEntity getTipo() {
         return ResponseEntity.status(200).body(repository.findAll());
     }
+
+
+
+
 
 }

@@ -25,6 +25,7 @@ public class GravaArquivo {
         }
     }
 
+
 //    public static void main(String[] args) {
 //
 //        String nomeArq = "Certidoes.txt";
@@ -71,5 +72,6 @@ public class GravaArquivo {
 //        trailer += String.format("%010d", contRegDados);
 //        gravaRegistro(nomeArq,trailer);
 //    }
+
 
 }
