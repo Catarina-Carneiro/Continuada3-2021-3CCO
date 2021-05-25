@@ -2,6 +2,7 @@ package com.example.continuada3.dominio;
 
 
 import br.com.caelum.stella.bean.validation.CPF;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -45,7 +46,7 @@ public class Certidao {
     private String  nomeDoPai;
 
     @ManyToOne
-    private Cartorio cartorio;
+    private TipoCertidao tipo;
 
 
     //getters e setters
@@ -107,11 +108,11 @@ public class Certidao {
         this.nomeDoPai = nomeDoPai;
     }
 
-    public Cartorio getCartorio() {
-        return cartorio;
+    public TipoCertidao getTipo() {
+        return tipo;
     }
 
-    public void setCartorio(Cartorio cartorio) {
-        this.cartorio = cartorio;
+    public void setTipo(TipoCertidao tipo) {
+        this.tipo = tipo;
     }
 }
