@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Optional;
 
 
 @RestController
@@ -21,7 +22,7 @@ public class CertidoesController {
     @Autowired
     private TipoCertidaoRepository tipoCertidaoRepository;
 
-    //PilhaObj<Certidao> certidaoDeletada = new PilhaObj(3);
+    PilhaObj<Certidao> certidaoDeletada = new PilhaObj(3);
 
     @GetMapping
     public ResponseEntity getCertidoes() {
@@ -38,41 +39,28 @@ public class CertidoesController {
         }
     }
 
+
     @DeleteMapping("/{id}")
-    public ResponseEntity deletaCertidao(@PathVariable int id) {
-        if (repository.existsById(id)) {
+    public ResponseEntity deletarCertidao(@PathVariable int id){
+        if (repository.existsById(id)){
+            Optional<Certidao> certidao = repository.findById(id);
+            certidaoDeletada.push(certidao.get());
             repository.deleteById(id);
             return ResponseEntity.status(200).build();
-        } else {
+        }else{
             return ResponseEntity.status(404).build();
         }
     }
 
-
-
-
-//    @DeleteMapping("/{id}")
-//    public ResponseEntity deletarCertidao(@PathVariable int id){
-//        if (repository.existsById(id)){
-//            certidaoDeletada.push(repository.getById(id));
-//            repository.delete(id);
-//            return ResponseEntity.status(200).build();
-//        }else{
-//            return ResponseEntity.status(404).build();
-//        }
-//    }
-//
-//    @PostMapping("/desfazerDelete")
-//    public ResponseEntity desfazerDelete(){
-//        if (!certidaoDeletada.isEmpty()){
-//            repository.save(certidaoDeletada.pop());
-//            return ResponseEntity.status(201).build();
-//        }else {
-//            return ResponseEntity.status(204).body("Não há Delete para desfazer");
-//        }
-// }
-
-
+    @PostMapping("/desfazer-delete")
+    public ResponseEntity desfazerDelete(){
+        if (!certidaoDeletada.isEmpty()){
+            repository.save(certidaoDeletada.pop());
+            return ResponseEntity.status(201).build();
+        }else {
+            return ResponseEntity.status(204).body("Não há Delete para desfazer");
+        }
+    }
 
 
 //    @GetMapping("/tipo/{idTipo}")

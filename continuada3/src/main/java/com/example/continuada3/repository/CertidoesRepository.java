@@ -6,5 +6,4 @@ import java.util.List;
 
 public interface CertidoesRepository extends  JpaRepository<Certidao, Integer> {
 
-   // List<Certidao> delete(int id);
 }
