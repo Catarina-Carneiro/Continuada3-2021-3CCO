@@ -21,15 +21,15 @@ public class CertidoesController {
     @Autowired
     private TipoCertidaoRepository tipoCertidaoRepository;
 
-    PilhaObj<Certidao> certidaoDeletada =new PilhaObj<>(3);
+    //PilhaObj<Certidao> certidaoDeletada = new PilhaObj(3);
 
     @GetMapping
-    public ResponseEntity getCertidoes(){
+    public ResponseEntity getCertidoes() {
         return ResponseEntity.status(200).body(repository.findAll());
     }
 
     @PostMapping
-    public ResponseEntity postCertidao( @RequestBody @Valid Certidao novaCertidao) {
+    public ResponseEntity postCertidao(@RequestBody @Valid Certidao novaCertidao) {
         if (tipoCertidaoRepository.existsById(novaCertidao.getTipo().getId())) {
             repository.save(novaCertidao);
             return ResponseEntity.status(201).build();
@@ -39,30 +39,47 @@ public class CertidoesController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity deletarCertidao(@PathVariable int id){
-        if (repository.existsById(id)){
-            certidaoDeletada.push(repository.getById(id));
-            repository.delete(id);
+    public ResponseEntity deletaCertidao(@PathVariable int id) {
+        if (repository.existsById(id)) {
+            repository.deleteById(id);
             return ResponseEntity.status(200).build();
-        }else{
+        } else {
             return ResponseEntity.status(404).build();
         }
     }
 
-    @PostMapping("/desfazerDelete")
-    public ResponseEntity desfazerDelete(){
-        if (!certidaoDeletada.isEmpty()){
-            repository.save(certidaoDeletada.pop());
-            return ResponseEntity.status(201).build();
-        }else {
-            return ResponseEntity.status(204).body("Não há Delete para desfazer");
-        }
-    }
+
+
+
+//    @DeleteMapping("/{id}")
+//    public ResponseEntity deletarCertidao(@PathVariable int id){
+//        if (repository.existsById(id)){
+//            certidaoDeletada.push(repository.getById(id));
+//            repository.delete(id);
+//            return ResponseEntity.status(200).build();
+//        }else{
+//            return ResponseEntity.status(404).build();
+//        }
+//    }
+//
+//    @PostMapping("/desfazerDelete")
+//    public ResponseEntity desfazerDelete(){
+//        if (!certidaoDeletada.isEmpty()){
+//            repository.save(certidaoDeletada.pop());
+//            return ResponseEntity.status(201).build();
+//        }else {
+//            return ResponseEntity.status(204).body("Não há Delete para desfazer");
+//        }
+// }
+
+
 
 
 //    @GetMapping("/tipo/{idTipo}")
 //    public ResponseEntity getEsportesPorTipo(@PathVariable Integer idTipo) {
 //        return ResponseEntity.status(200).body(repository.pesquisarPorTipo(idTipo));
 //    }
+
+
 
 }

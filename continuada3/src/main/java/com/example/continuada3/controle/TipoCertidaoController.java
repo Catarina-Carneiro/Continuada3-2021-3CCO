@@ -26,6 +26,15 @@ public class TipoCertidaoController {
     }
 
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity deletaTipo(@PathVariable int id) {
+        if (repository.existsById(id)) {
+            repository.deleteById(id);
+            return ResponseEntity.status(200).build();
+        } else {
+            return ResponseEntity.status(404).build();
+        }
+    }
 
 
 

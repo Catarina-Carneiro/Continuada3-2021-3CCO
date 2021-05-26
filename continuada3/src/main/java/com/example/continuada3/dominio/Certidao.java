@@ -2,7 +2,6 @@ package com.example.continuada3.dominio;
 
 
 import br.com.caelum.stella.bean.validation.CPF;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -19,7 +18,7 @@ public class Certidao {
     private Integer id;
 
     @CPF
-    @Column(name = "nro_cpf_dir", length = 11)
+    @Column(name = "cpf", length = 11)
     private String cpf;
 
     @Past
@@ -38,12 +37,12 @@ public class Certidao {
     @NotBlank
     @Size(min = 2, max = 30)
     @NotNull
-    private String  nomeDaMae;
+    private String mae;
 
     @NotBlank
     @Size(min = 2, max = 30)
     @NotNull
-    private String  nomeDoPai;
+    private String pai;
 
     @ManyToOne
     private TipoCertidao tipo;
@@ -92,20 +91,20 @@ public class Certidao {
         this.cidadeDeNascimento = cidadeDeNascimento;
     }
 
-    public String getNomeDaMae() {
-        return nomeDaMae;
+    public String getMae() {
+        return mae;
     }
 
-    public void setNomeDaMae(String nomeDaMae) {
-        this.nomeDaMae = nomeDaMae;
+    public void setMae(String mae) {
+        this.mae = mae;
     }
 
-    public String getNomeDoPai() {
-        return nomeDoPai;
+    public String getPai() {
+        return pai;
     }
 
-    public void setNomeDoPai(String nomeDoPai) {
-        this.nomeDoPai = nomeDoPai;
+    public void setPai(String pai) {
+        this.pai = pai;
     }
 
     public TipoCertidao getTipo() {

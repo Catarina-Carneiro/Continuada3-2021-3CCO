@@ -25,7 +25,7 @@ public class GravaArquivo {
         }
     }
 
-
+//
 //    public static void main(String[] args) {
 //
 //        String nomeArq = "Certidoes.txt";
@@ -48,7 +48,7 @@ public class GravaArquivo {
 //        corpo += "02";
 //
 //        corpo += String.format("%11s", "728.364.189-22");// cpf
-//        corpo += String.format("%04d", 1999);// ano de nascimento
+//        corpo += String.format("%8d", 19991230);// data de nascimento
 //        corpo += String.format("%-30s", "Axl Rose");  //nome
 //        corpo += String.format("%-15s", "Sao caetano"); //cidade
 //        corpo += String.format("%-30s", "Laddy gaga"); //mae
@@ -59,11 +59,19 @@ public class GravaArquivo {
 //
 //        corpo = "02";
 //        corpo += String.format("%11s", "924.435.392-10");// cpf
-//        corpo += String.format("%04d", 2001);// ano de nascimento
+//        corpo += String.format("%8d", 2001101);// data de nascimento
 //        corpo += String.format("%-30s", "tuco silva");  //nome
 //        corpo += String.format("%-15s", "Sao caetano"); //cidade
 //        corpo += String.format("%-30s", "nene silva"); //mae
 //        corpo += String.format("%-30s", "linelzinho silva"); //pai
+//        gravaRegistro(nomeArq,corpo);
+//
+//
+//        corpo = "03";
+//        corpo += String.format("%-15s", "furto");// nome
+//        gravaRegistro(nomeArq,corpo);
+//        corpo = "03";
+//        corpo += String.format("%-15s", "perda");// nome
 //        gravaRegistro(nomeArq,corpo);
 //
 //
