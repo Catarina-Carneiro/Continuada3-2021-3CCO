@@ -1,6 +1,7 @@
 package com.example.continuada3.controle;
 
 //import com.example.continuada3.agendamento.AgendamentoService;
+import com.example.continuada3.agendamento.AgendamentoService;
 import com.example.continuada3.dominio.Cartorio;
 import com.example.continuada3.dominio.Certidao;
 import com.example.continuada3.obj.FilaObj;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
@@ -23,18 +25,23 @@ public class CartorioController {
     @Autowired
     private CartorioRepository repository;
 
-   // @Autowired
-   // private AgendamentoService agendamentoService;
+    @Autowired
+    private AgendamentoService agendamentoService;
 
-    //public FilaObj<Integer> filaAgendamento = new FilaObj<Integer>(3);
+    public FilaObj<Integer> filaAgendamento = new FilaObj<Integer>(3);
 
-    @PostMapping
+    @GetMapping
+    public ResponseEntity getCartorios() {
+        List<Cartorio> ceartorio = repository.findAll();
+        return ResponseEntity.status(200).body(repository.findAll());
+    }
+
+    @PostMapping("/agendamento")
     public ResponseEntity novaBusca() {
 
-//
-//        Cartorio cartorio = new Cartorio();
-//        agendamentoService.agendar(agendamentoService.filaAgendamento);
-//        agendamentoService.filaAgendamento.insert(cartorio.getId());
+        Cartorio cartorio = new Cartorio();
+        agendamentoService.agendar(agendamentoService.filaAgendamento);
+        agendamentoService.filaAgendamento.insert(cartorio.getId());
 
 
             String protocolo = UUID.randomUUID().toString();

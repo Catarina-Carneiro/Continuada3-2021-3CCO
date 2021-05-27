@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.Optional;
 
 
@@ -25,10 +26,16 @@ public class CertidoesController {
     PilhaObj<Certidao> certidaoDeletada = new PilhaObj(3);
 
     @GetMapping
-    public ResponseEntity getCertidoes() {
+    public ResponseEntity<List<Certidao>> getCertidoes() {
 
-        return ResponseEntity.status(200).body(repository.findAll());
+        List<Certidao> certidao = repository.findAll();
+
+        return certidao.isEmpty()
+                ? ResponseEntity.status(204).build()
+                : ResponseEntity.status(200).body(certidao);
     }
+
+
 
     @PostMapping
     public ResponseEntity postCertidao(@RequestBody @Valid Certidao novaCertidao) {
