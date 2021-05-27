@@ -26,6 +26,7 @@ public class CertidoesController {
 
     @GetMapping
     public ResponseEntity getCertidoes() {
+
         return ResponseEntity.status(200).body(repository.findAll());
     }
 

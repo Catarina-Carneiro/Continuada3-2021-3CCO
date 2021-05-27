@@ -1,6 +1,10 @@
 package com.example.continuada3.controle;
 
+//import com.example.continuada3.agendamento.AgendamentoService;
 import com.example.continuada3.dominio.Cartorio;
+import com.example.continuada3.dominio.Certidao;
+import com.example.continuada3.obj.FilaObj;
+import com.example.continuada3.obj.PilhaObj;
 import com.example.continuada3.repository.CartorioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,34 +23,47 @@ public class CartorioController {
     @Autowired
     private CartorioRepository repository;
 
+   // @Autowired
+   // private AgendamentoService agendamentoService;
+
+    //public FilaObj<Integer> filaAgendamento = new FilaObj<Integer>(3);
+
     @PostMapping
     public ResponseEntity novaBusca() {
 
-        String protocolo = UUID.randomUUID().toString();
-        LocalDateTime previsao = LocalDateTime.now().plusSeconds(16);
+//
+//        Cartorio cartorio = new Cartorio();
+//        agendamentoService.agendar(agendamentoService.filaAgendamento);
+//        agendamentoService.filaAgendamento.insert(cartorio.getId());
 
 
-        Thread sorteador = new Thread(() -> {
-            try {
-                Thread.sleep(15_000);
-                Integer numero = ThreadLocalRandom.current().nextInt(1, 3);
+            String protocolo = UUID.randomUUID().toString();
+            LocalDateTime previsao = LocalDateTime.now().plusSeconds(16);
 
-                Cartorio lugarDeBusca= new Cartorio();
-                lugarDeBusca.setProtocolo(protocolo);
-                lugarDeBusca.setCartorioDeBusca(numero);
 
-                repository.save(lugarDeBusca);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        });
-        sorteador.start();
+            Thread sorteador = new Thread(() -> {
+                try {
+                    Thread.sleep(15_000);
+                    Integer numero = ThreadLocalRandom.current().nextInt(1, 3);
 
-        return ResponseEntity
-                .status(202)
-                .header("protocolo", protocolo)
-                .header("previsao", previsao.toString())
-                .build();
+                    Cartorio lugarDeBusca = new Cartorio();
+                    lugarDeBusca.setProtocolo(protocolo);
+                    lugarDeBusca.setCartorioDeBusca(numero);
+
+                    repository.save(lugarDeBusca);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            });
+            sorteador.start();
+
+            return ResponseEntity
+                    .status(202)
+                    .header("protocolo", protocolo)
+                    .header("previsao", previsao.toString())
+                    .build();
+
+
     }
 
     @GetMapping("/{protocolo}")
@@ -56,13 +73,12 @@ public class CartorioController {
         if (protocoloOptional.isPresent()) {
             return ResponseEntity
                     .status(200).body("O cartorio de busca da sua certidão é o de número: "
-                            +protocoloOptional.get().getCartorioDeBusca());
+                            + protocoloOptional.get().getCartorioDeBusca());
         } else {
             LocalDateTime previsao = LocalDateTime.now().plusSeconds(5);
             return ResponseEntity.status(404).header("previsao", previsao.toString()).build();
         }
     }
-
 
 
 }

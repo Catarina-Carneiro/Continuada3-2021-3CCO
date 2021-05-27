@@ -75,6 +75,10 @@ public class Certidao {
         this.dataNascimento = dataNascimento;
     }
 
+    public void setTipo(TipoCertidao tipo) {
+        this.tipo = tipo;
+    }
+
     public String getNome() {
         return nome;
     }
@@ -111,7 +115,6 @@ public class Certidao {
         return tipo;
     }
 
-    public void setTipo(TipoCertidao tipo) {
-        this.tipo = tipo;
-    }
+
+
 }
