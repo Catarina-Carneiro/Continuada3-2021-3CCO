@@ -28,7 +28,6 @@ class TipoCertidaoControllerTest {
 
     @Test
     void getTipoDone() {
-        //passou
 
         List<TipoCertidao> certidaoTeste = Arrays.asList(new TipoCertidao(), new TipoCertidao(), new TipoCertidao());
 
@@ -57,8 +56,6 @@ class TipoCertidaoControllerTest {
     @Test
     void postTipoDone() {
 
-        //passou
-
        TipoCertidao tipo = new TipoCertidao();
 
        tipo.setNome("furto");
@@ -70,8 +67,6 @@ class TipoCertidaoControllerTest {
 
     @Test
     void postTipoDoneVazio() {
-
-        //passou
 
         TipoCertidao tipo = new TipoCertidao();
 

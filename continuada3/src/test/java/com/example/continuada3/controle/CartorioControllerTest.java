@@ -49,7 +49,6 @@ class CartorioControllerTest {
 
         List<Cartorio> cartorioTeste = Arrays.asList(new Cartorio(), new Cartorio(), new Cartorio());
 
-
         Mockito.when(repository.findAll()).thenReturn(cartorioTeste);
 
         ResponseEntity<List<Cartorio>> resposta = controller.getCartorios();
