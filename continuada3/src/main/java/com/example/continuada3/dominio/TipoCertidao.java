@@ -48,4 +48,5 @@ public class TipoCertidao {
     public void setCertidoes(List<Certidao> certidoes) {
         this.certidoes = certidoes;
     }
+
 }

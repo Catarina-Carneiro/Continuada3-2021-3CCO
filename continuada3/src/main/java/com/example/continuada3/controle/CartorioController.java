@@ -1,7 +1,8 @@
 package com.example.continuada3.controle;
 
 //import com.example.continuada3.agendamento.AgendamentoService;
-import com.example.continuada3.agendamento.AgendamentoService;
+
+
 import com.example.continuada3.dominio.Cartorio;
 import com.example.continuada3.dominio.Certidao;
 import com.example.continuada3.obj.FilaObj;
@@ -9,6 +10,7 @@ import com.example.continuada3.obj.PilhaObj;
 import com.example.continuada3.repository.CartorioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -25,10 +27,10 @@ public class CartorioController {
     @Autowired
     private CartorioRepository repository;
 
-    @Autowired
-    private AgendamentoService agendamentoService;
+//    @Autowired
+//    private AgendamentoService agendamentoService;
 
-    public FilaObj<Integer> filaAgendamento = new FilaObj<Integer>(3);
+    public FilaObj<Cartorio> filaAgendamento = new FilaObj<>(3);
 
     @GetMapping
     public ResponseEntity getCartorios() {
@@ -36,12 +38,14 @@ public class CartorioController {
         return ResponseEntity.status(200).body(repository.findAll());
     }
 
+    @Scheduled(fixedRate = 60000)
     @PostMapping("/agendamento")
     public ResponseEntity novaBusca() {
 
-        Cartorio cartorio = new Cartorio();
-        agendamentoService.agendar(agendamentoService.filaAgendamento);
-        agendamentoService.filaAgendamento.insert(cartorio.getId());
+
+      //  Cartorio cartorio = new Cartorio();
+      //  agendamentoService.agendar(agendamentoService.filaAgendamento);
+      //  agendamentoService.filaAgendamento.insert(cartorio.getId());
 
 
             String protocolo = UUID.randomUUID().toString();
@@ -75,6 +79,7 @@ public class CartorioController {
 
     @GetMapping("/{protocolo}")
     public ResponseEntity getSorteio(@PathVariable String protocolo) {
+
         Optional<Cartorio> protocoloOptional = repository.findById(protocolo);
 
         if (protocoloOptional.isPresent()) {

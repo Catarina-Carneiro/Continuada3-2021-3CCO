@@ -2,8 +2,8 @@ package com.example.continuada3.controle;
 
 import com.example.continuada3.dominio.Certidao;
 import com.example.continuada3.dominio.TipoCertidao;
-import com.example.continuada3.repository.CertidoesRepository;
 import com.example.continuada3.repository.TipoCertidaoRepository;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,36 +16,38 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 @SpringBootTest
-class CertidoesControllerTest {
+class TipoCertidaoControllerTest {
 
     @Autowired
-    CertidoesController controller;
+    TipoCertidaoController controller;
 
     @MockBean
-    CertidoesRepository repository;
+    TipoCertidaoRepository repository;
 
     @Test
-    void getCertidoes200() {
+    void getTipo200() {
 
-        List<Certidao> certidaoTeste = Arrays.asList(new Certidao(), new Certidao(), new Certidao());
+        List<TipoCertidao> certidaoTeste = Arrays.asList(new TipoCertidao(), new TipoCertidao(), new TipoCertidao());
+
 
         Mockito.when(repository.findAll()).thenReturn(certidaoTeste);
 
-        ResponseEntity<List<Certidao>> resposta = controller.getCertidoes();
+        ResponseEntity<List<TipoCertidao>> resposta = controller.getTipo();
 
         assertEquals(200, resposta.getStatusCodeValue());
         assertEquals(3, resposta.getBody().size());
+
     }
 
+
     @Test
-    void getCertidoes204() {
+    void getTipo204() {
 
-        List<Certidao> certidaoTeste = Arrays.asList(new Certidao(), new Certidao(), new Certidao());
+        Mockito.when(repository.findAll()).thenReturn(new ArrayList<>());
 
-        Mockito.when(repository.findAll()).thenReturn(certidaoTeste);
-
-        ResponseEntity<List<Certidao>> resposta = controller.getCertidoes();
+        ResponseEntity<List<TipoCertidao>> resposta = controller.getTipo();
 
         assertEquals(204, resposta.getStatusCodeValue());
         assertNull(resposta.getBody());

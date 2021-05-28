@@ -36,7 +36,6 @@ public class CertidoesController {
     }
 
 
-
     @PostMapping
     public ResponseEntity postCertidao(@RequestBody @Valid Certidao novaCertidao) {
         if (tipoCertidaoRepository.existsById(novaCertidao.getTipo().getId())) {
@@ -49,23 +48,23 @@ public class CertidoesController {
 
 
     @DeleteMapping("/{id}")
-    public ResponseEntity deletarCertidao(@PathVariable int id){
-        if (repository.existsById(id)){
+    public ResponseEntity deletarCertidao(@PathVariable int id) {
+        if (repository.existsById(id)) {
             Optional<Certidao> certidao = repository.findById(id);
             certidaoDeletada.push(certidao.get());
             repository.deleteById(id);
             return ResponseEntity.status(200).build();
-        }else{
+        } else {
             return ResponseEntity.status(404).build();
         }
     }
 
     @PostMapping("/desfazer-delete")
-    public ResponseEntity desfazerDelete(){
-        if (!certidaoDeletada.isEmpty()){
+    public ResponseEntity desfazerDelete() {
+        if (!certidaoDeletada.isEmpty()) {
             repository.save(certidaoDeletada.pop());
             return ResponseEntity.status(201).build();
-        }else {
+        } else {
             return ResponseEntity.status(204).body("Não há Delete para desfazer");
         }
     }
@@ -75,7 +74,6 @@ public class CertidoesController {
 //    public ResponseEntity getEsportesPorTipo(@PathVariable Integer idTipo) {
 //        return ResponseEntity.status(200).body(repository.pesquisarPorTipo(idTipo));
 //    }
-
 
 
 }

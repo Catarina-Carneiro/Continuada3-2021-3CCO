@@ -96,9 +96,9 @@ public class LeArquivo {
         }
     }
 
-    public static void main(String[] args) {
-        String nomeArq = "Certidoes.txt";
-        leArquivo(nomeArq);
-    }
+//    public static void main(String[] args) {
+//        String nomeArq = "Certidoes.txt";
+//        leArquivo(nomeArq);
+//    }
 
 }

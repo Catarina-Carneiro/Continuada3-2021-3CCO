@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/tipos")
 public class TipoCertidaoController {
@@ -21,7 +23,7 @@ public class TipoCertidaoController {
     }
 
     @GetMapping
-    public ResponseEntity getTipo() {
+    public ResponseEntity<List<TipoCertidao>> getTipo() {
         return ResponseEntity.status(200).body(repository.findAll());
     }
 
@@ -35,7 +37,6 @@ public class TipoCertidaoController {
             return ResponseEntity.status(404).build();
         }
     }
-
 
 
 }
