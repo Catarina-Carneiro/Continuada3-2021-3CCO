@@ -28,7 +28,7 @@ class CertidoesControllerTest {
     CertidoesRepository repository;
 
     @Test
-    void getCertidoes200() {
+    void getCertidoesDone() {
 
         List<Certidao> certidaoTeste = Arrays.asList(new Certidao(), new Certidao(), new Certidao());
 
@@ -41,7 +41,7 @@ class CertidoesControllerTest {
     }
 
     @Test
-    void getCertidoes204() {
+    void getCertidoesFail() {
 
         List<Certidao> certidaoTeste = Arrays.asList(new Certidao(), new Certidao(), new Certidao());
 
@@ -55,7 +55,7 @@ class CertidoesControllerTest {
 
 
     @Test
-    void desfazerDelete() {
+    void desfazerDeleteDone() {
 
         List<Certidao> certidaoTeste = Arrays.asList(new Certidao(), new Certidao(), new Certidao());
         PilhaObj<Certidao> certidaoDeletada = new PilhaObj(3);

@@ -27,7 +27,7 @@ class TipoCertidaoControllerTest {
     TipoCertidaoRepository repository;
 
     @Test
-    void getTipo200() {
+    void getTipoDone() {
         //passou
 
         List<TipoCertidao> certidaoTeste = Arrays.asList(new TipoCertidao(), new TipoCertidao(), new TipoCertidao());
@@ -43,7 +43,7 @@ class TipoCertidaoControllerTest {
 
 
     @Test
-    void getTipo204() {
+    void getTipoFail() {
 
         Mockito.when(repository.findAll()).thenReturn(new ArrayList<>());
 
@@ -55,7 +55,7 @@ class TipoCertidaoControllerTest {
 
 
     @Test
-    void postTipo() {
+    void postTipoDone() {
 
         //passou
 
@@ -69,7 +69,7 @@ class TipoCertidaoControllerTest {
     }
 
     @Test
-    void postTipoFail() {
+    void postTipoDoneVazio() {
 
         //passou
 
@@ -81,6 +81,7 @@ class TipoCertidaoControllerTest {
 
         assertEquals(201, resposta.getStatusCodeValue());
     }
+
 
 
 

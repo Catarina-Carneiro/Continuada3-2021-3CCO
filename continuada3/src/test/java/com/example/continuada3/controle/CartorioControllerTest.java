@@ -13,6 +13,8 @@ import org.springframework.http.ResponseEntity;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -52,7 +54,7 @@ class CartorioControllerTest {
 
         ResponseEntity<List<Cartorio>> resposta = controller.getCartorios();
 
-        assertEquals(204, resposta.getStatusCodeValue());
+        assertEquals(200, resposta.getStatusCodeValue());
         assertEquals(3, resposta.getBody().size());
 
 
@@ -63,14 +65,29 @@ class CartorioControllerTest {
 
         Cartorio cartorio = new Cartorio();
 
+        ResponseEntity resposta = controller.novaBusca();
 
-        ResponseEntity resposta = controller.post(cartorio);
+
+       // tipo.setNome("");
 
         assertEquals(201, resposta.getStatusCodeValue());
     }
 
     @Test
+    void novaBuscaFail() {
+
+        Cartorio cartorio = new Cartorio();
+
+        ResponseEntity resposta = controller.novaBusca();
+
+        // tipo.setNome("");
+
+        assertEquals(202, resposta.getStatusCodeValue());
+    }
+
+    @Test
     void getSorteio() {
+
 
     }
 }
