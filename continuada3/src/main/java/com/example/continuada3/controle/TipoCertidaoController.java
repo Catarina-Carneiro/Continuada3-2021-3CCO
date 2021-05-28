@@ -18,6 +18,7 @@ public class TipoCertidaoController {
 
     @PostMapping()
     public ResponseEntity postTipo(@RequestBody TipoCertidao novoTipo) {
+
         repository.save(novoTipo);
         return ResponseEntity.status(201).build();
     }

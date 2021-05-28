@@ -28,9 +28,9 @@ class TipoCertidaoControllerTest {
 
     @Test
     void getTipo200() {
+        //passou
 
         List<TipoCertidao> certidaoTeste = Arrays.asList(new TipoCertidao(), new TipoCertidao(), new TipoCertidao());
-
 
         Mockito.when(repository.findAll()).thenReturn(certidaoTeste);
 
@@ -52,6 +52,39 @@ class TipoCertidaoControllerTest {
         assertEquals(204, resposta.getStatusCodeValue());
         assertNull(resposta.getBody());
     }
+
+
+    @Test
+    void postTipo() {
+
+        //passou
+
+       TipoCertidao tipo = new TipoCertidao();
+
+       tipo.setNome("furto");
+
+        ResponseEntity resposta = controller.postTipo(tipo);
+
+        assertEquals(201, resposta.getStatusCodeValue());
+    }
+
+    @Test
+    void postTipoFail() {
+
+        //passou
+
+        TipoCertidao tipo = new TipoCertidao();
+
+        tipo.setNome("");
+
+        ResponseEntity resposta = controller.postTipo(tipo);
+
+        assertEquals(201, resposta.getStatusCodeValue());
+    }
+
+
+
+
 
 
 }

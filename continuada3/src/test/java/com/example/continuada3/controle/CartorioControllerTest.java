@@ -57,4 +57,20 @@ class CartorioControllerTest {
 
 
     }
+
+    @Test
+    void novaBusca() {
+
+        Cartorio cartorio = new Cartorio();
+
+
+        ResponseEntity resposta = controller.post(cartorio);
+
+        assertEquals(201, resposta.getStatusCodeValue());
+    }
+
+    @Test
+    void getSorteio() {
+
+    }
 }
