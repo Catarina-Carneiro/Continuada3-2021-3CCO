@@ -21,8 +21,7 @@ public class FilaObj<T> {
     public void insert(T info) {
         if (isFull()) {
             System.out.println("Fila cheia");
-        }
-        else {
+        } else {
 
             fila[tamanho++] = info;
         }
@@ -31,6 +30,7 @@ public class FilaObj<T> {
     public T peek() {
         return fila[0];
     }
+
     public T poll() {
         T primeiro = peek();
         if (!isEmpty()) {

@@ -15,7 +15,6 @@ public class Arquivo {
     private byte[] conteudoArquivo;
 
 
-
     public Integer getId() {
         return id;
     }

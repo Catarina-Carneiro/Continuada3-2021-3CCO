@@ -10,9 +10,9 @@ public class LeArquivo {
         BufferedReader entrada = null;
         String registro;
         String tipoRegistro;
-        String cpf,nome,cidade,mae,pai;
+        String cpf, nome, cidade, mae, pai;
         Integer dataDeNascimento;
-        int contRegistro=0;
+        int contRegistro = 0;
 
         // Abre o arquivo
         try {
@@ -33,55 +33,50 @@ public class LeArquivo {
                 if (tipoRegistro.equals("00")) {
                     System.out.println("Header");
                     System.out.println("Tipo de arquivo: " + registro.substring(2, 6));
-                    int periodo= Integer.parseInt(registro.substring(6,11));
+                    int periodo = Integer.parseInt(registro.substring(6, 11));
                     System.out.println("Período: " + periodo);
-                    System.out.println("Data/hora de geração do arquivo: " + registro.substring(11,30));
-                    System.out.println("Versão do layout: " + registro.substring(30,32));
-                }
-                else if (tipoRegistro.equals("01")) {
+                    System.out.println("Data/hora de geração do arquivo: " + registro.substring(11, 30));
+                    System.out.println("Versão do layout: " + registro.substring(30, 32));
+                } else if (tipoRegistro.equals("01")) {
                     System.out.println("\nTrailer");
-                    int qtdRegistro = Integer.parseInt(registro.substring(3,7));
+                    int qtdRegistro = Integer.parseInt(registro.substring(3, 7));
                     if (qtdRegistro == contRegistro) {
                         System.out.println("Quantidade de registros gravados compatível com quantidade lida");
-                    }
-                    else {
+                    } else {
                         System.out.println("Quantidade de registros gravados não confere com quantidade lida");
                     }
-                }
-                else if (tipoRegistro.equals("02")) {
+                } else if (tipoRegistro.equals("02")) {
                     if (contRegistro == 0) {
                         System.out.println();
                         System.out.printf("%11s %8s %-30s %-15s %-30s %-30s\n",
-                                "CPF","DATADENASCIMENTO","NOME","CIDADE","MAE","PAI");
+                                "CPF", "DATADENASCIMENTO", "NOME", "CIDADE", "MAE", "PAI");
 
                     }
 
-                    cpf = registro.substring(2,13);
-                    dataDeNascimento = Integer.parseInt(registro.substring(13,21));
-                    nome = registro.substring(21,51);
-                    cidade = registro.substring(51,66);
-                    mae = registro.substring(66,96);
-                    pai = registro.substring(96,126);
+                    cpf = registro.substring(2, 13);
+                    dataDeNascimento = Integer.parseInt(registro.substring(13, 21));
+                    nome = registro.substring(21, 51);
+                    cidade = registro.substring(51, 66);
+                    mae = registro.substring(66, 96);
+                    pai = registro.substring(96, 126);
 
 
                     System.out.printf("%11s %8d %-30s %-15s %-30s %-30s\n",
-                            cpf,dataDeNascimento,nome,cidade,mae,pai);
+                            cpf, dataDeNascimento, nome, cidade, mae, pai);
                     contRegistro++;
-                }else if (tipoRegistro.equals("03")) {
+                } else if (tipoRegistro.equals("03")) {
                     if (contRegistro == 0) {
                         System.out.println();
                         System.out.printf("%11s %8d %-30s %-15s %-30s %-30s\n",
                                 "TIPO");
                     }
 
-                    nome = registro.substring(2,17);
+                    nome = registro.substring(2, 17);
 
                     System.out.printf("%-15s\n",
-                           nome);
+                            nome);
                     contRegistro++;
-                }
-
-                else {
+                } else {
                     System.out.println("Tipo de registro inválido");
                 }
 

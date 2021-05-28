@@ -26,8 +26,7 @@ public class PilhaObj<T> {
         if (!isFull()) {
             pilha[++topo] = info;
 
-        }
-        else {
+        } else {
             System.out.println("Pilha cheia");
         }
     }
@@ -41,7 +40,7 @@ public class PilhaObj<T> {
 
 
     public T peek() {
-        if(!isEmpty()) {
+        if (!isEmpty()) {
             return pilha[topo];
         }
         return null;
@@ -49,17 +48,15 @@ public class PilhaObj<T> {
 
 
     public void exibe() {
-        if(isEmpty()) {
+        if (isEmpty()) {
             System.out.println("Pilha vazia");
-        }
-        else {
-            for(int i = 0; i <= topo; i++) {
+        } else {
+            for (int i = 0; i <= topo; i++) {
                 System.out.println(pilha[i]);
             }
         }
 
     }
-
 
 
 }

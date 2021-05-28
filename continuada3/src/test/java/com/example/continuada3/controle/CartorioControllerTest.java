@@ -61,16 +61,16 @@ class CartorioControllerTest {
     }
 
     @Test
-    void novaBusca() {
+    void novaBuscaDone() {
 
         Cartorio cartorio = new Cartorio();
 
+        cartorio.setCartorioDeBusca(1);
+
         ResponseEntity resposta = controller.novaBusca();
 
+        assertEquals(202, resposta.getStatusCodeValue());
 
-       // tipo.setNome("");
-
-        assertEquals(201, resposta.getStatusCodeValue());
     }
 
     @Test
@@ -80,14 +80,11 @@ class CartorioControllerTest {
 
         ResponseEntity resposta = controller.novaBusca();
 
-        // tipo.setNome("");
-
         assertEquals(202, resposta.getStatusCodeValue());
     }
 
     @Test
     void getSorteio() {
-
 
     }
 }

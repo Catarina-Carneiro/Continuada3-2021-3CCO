@@ -8,7 +8,7 @@ import java.util.Date;
 
 public class GravaArquivo {
 
-    public static void gravaRegistro (String nomeArq, String registro) {
+    public static void gravaRegistro(String nomeArq, String registro) {
         BufferedWriter saida = null;
         try {
             saida = new BufferedWriter(new FileWriter(nomeArq, true));
@@ -54,19 +54,18 @@ public class GravaArquivo {
         corpo += String.format("%-30s", "Laddy gaga"); //mae
         corpo += String.format("%-30s", "thomas shelby"); //pai
         contRegDados++;
-        gravaRegistro(nomeArq,corpo);
+        gravaRegistro(nomeArq, corpo);
 
 
         corpo = "03";
         corpo += String.format("%-15s", "perda"); // nome
-        gravaRegistro(nomeArq,corpo);
-
+        gravaRegistro(nomeArq, corpo);
 
 
         // monta o trailer
         trailer += "01";
         trailer += String.format("%010d", contRegDados);
-        gravaRegistro(nomeArq,trailer);
+        gravaRegistro(nomeArq, trailer);
     }
 
 

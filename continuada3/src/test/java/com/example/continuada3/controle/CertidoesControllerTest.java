@@ -18,6 +18,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 @SpringBootTest
 class CertidoesControllerTest {
 
@@ -86,9 +87,6 @@ class CertidoesControllerTest {
         ResponseEntity resposta = controller.postCertidao(certidao);
         assertEquals(400, resposta.getStatusCodeValue());
     }
-
-
-
 
 
 }
